@@ -1,0 +1,103 @@
+{% extends "layout.njk" %}
+{% block content %}
+<div class="card">
+    <section class="avatar">
+        <div class="pics">
+            <img src="{{item.pictures[0].url}}" alt="imagem">
+        </div>
+
+        <div class="pics">
+            <img src="{{item.pictures[1].url}}" alt="imagem">
+        </div>
+
+        <div class="pics">
+            <img src="{{item.pictures[2].url}}" alt="imagem">
+        </div>
+    </section>
+
+    <section class="details">
+        <h3 class="st">Details</h3>
+        <div class="item">
+            <div>Company:</div>
+            <div>{{item.company}}</div>
+        </div>
+
+        <div class="item">
+            <div>Budget:</div>
+            <div>{{item.budget}}</div>
+        </div>
+
+        <div class="item">
+            <div>Name:</div>
+            <div>{{item.name.first}} {{item.name.last}}</div>
+        </div>
+
+        <div class="item">
+            <div>E-mail:</div>
+            <div>{{item.email}}</div>
+        </div>
+
+        <div class="item">
+            <div>Age:</div>
+            <div>{{item.age}}</div>
+        </div>
+
+        <div class="item">
+            <div>Phone:</div>
+            <div>{{item.phone}}</div>
+        </div>
+
+        <div class="item">
+            <div>Address:</div>
+            <div>{{item.address}}</div>
+        </div>
+
+        <div class="item">
+            <div>About: </div>
+            <div>{{item.about}}</div>
+        </div>
+
+        <div class="item">
+            <div>Registered:</div>
+            <div>{{item.registered}}</div>
+        </div>
+
+        <h3 class="nd">Contact Timeline</h3>
+            <div class="timeline">
+                <div>At {{item.contactTimeline[0].date}}</div>
+                <div>{{item.contactTimeline[0].broker}}</div>
+            </div>
+
+            <div class="timeline">
+                <div>At {{item.contactTimeline[1].date}}</div>
+                <div>{{item.contactTimeline[1].broker}}</div>
+            </div>
+
+            <div class="timeline">
+                <div>At {{item.contactTimeline[2].date}}</div>
+                <div>{{item.contactTimeline[2].broker}}</div>
+            </div>
+
+        <div id="mapa"></div>
+
+        <script>
+            function inicializar(cliente) {
+                var coordenadas = {lat: {{item.latitude}}, lng: {{item.longitude}}}
+                var mapa = new google.maps.Map(document.getElementById('mapa'), {
+                    zoom: 9,
+                    center: coordenadas 
+                })
+                var marker = new google.maps.Marker({
+                    position: coordenadas,
+                    map: mapa,
+                    title: 'Address'
+                })
+            }
+        </script>
+
+        <script async defer 
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZn1YyHI0KdCjVpN8S3gZT00OEnenluEY&callback=inicializar">
+        </script>
+    </section>
+</div>
+{% endblock content %}

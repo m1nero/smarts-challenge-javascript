@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+{% block content %}
+<div class="card table-container">
+    <div class="header">
+        <a class="button" id="menor" href="/dashboard_menor">Menor Budget</a>
+        <a class="button" id="maior" href="/dashboard_maior">Maior Budget</a>
+        <a class="button" id="asc" href="/dashboard_asc">A-Z</a>
+        <a class="button" id="desc" href="/dashboard_desc">Z-A</a>
+    </div>
+    <table width="100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="rows">
+            {% for item in items %}
+                {% if loop.index0 < loop.length %}
+                    <tr class="row" id={{item._id}}>
+                        <td>
+                            <span style="background-image: url({{item.pictures[0].url}})"></span>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Name: {{item.name.first}} {{item.name.last}}</li>
+                                <li>E-mail: {{item.email}}</li>
+                                <li>Company: {{item.company}}</li>
+                                <li>Age: {{item.age}}</li>
+                                <li>Budget: R{{item.budget}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

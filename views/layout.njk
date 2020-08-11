@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %} 
+            <title>SmartStaff</title>
+            <link rel="icon" href="https://image.flaticon.com/icons/svg/2830/2830532.svg"/>
+        {% endblock %}
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <header>
+            <div class="links">
+                <a href="/">Smarts Dashboard</a>
+            </div>
+        </header>
+        {% block content %} {% endblock %}
+        <script src="/scripts.js"></script>
+    </body>
+</html>
